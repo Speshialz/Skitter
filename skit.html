@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Naija Script Generator - TikTok, YouTube & IG Scripts</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#5D5CDE',
+                        'naija-green': '#008751',
+                        'naija-white': '#FFFFFF',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #008751 0%, #5D5CDE 100%);
+        }
+        .script-content {
+            white-space: pre-wrap;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body class="bg-white dark:bg-gray-900 min-h-screen transition-colors duration-300">
+    <div class="container mx-auto px-4 py-8 max-w-4xl">
+        <!-- Header -->
+        <div class="text-center mb-8">
+            <div class="gradient-bg text-white rounded-2xl p-6 mb-6">
+                <h1 class="text-3xl md:text-4xl font-bold mb-2">🎬 Naija Script Generator</h1>
+                <p class="text-lg opacity-90">Create engaging scripts for TikTok, YouTube & Instagram</p>
+                <div class="flex justify-center items-center mt-4 space-x-4 text-sm">
+                    <span class="bg-white/20 px-3 py-1 rounded-full">🇳🇬 Nigerian Content</span>
+                    <span class="bg-white/20 px-3 py-1 rounded-full">📱 Social Media Ready</span>
+                    <span class="bg-white/20 px-3 py-1 rounded-full">⚡ AI Powered</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Input Form -->
+        <div class="bg-gray-50 dark:bg-gray-800 rounded-2xl p-6 mb-8 shadow-lg">
+            <h2 class="text-2xl font-bold mb-6 text-gray-800 dark:text-white">Generate Your Script</h2>
+            
+            <div class="grid md:grid-cols-2 gap-6 mb-6">
+                <!-- Topic Input -->
+                <div>
+                    <label for="topic" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                        Video Topic/Idea
+                    </label>
+                    <input 
+                        type="text" 
+                        id="topic" 
+                        placeholder="e.g., First day at university, Nigerian food review, dating struggles..."
+                        class="w-full px-4 py-3 text-base border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent dark:bg-gray-700 dark:text-white"
+                    >
+                </div>
+
+                <!-- Tone Selection -->
+                <div>
+                    <label for="tone" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                        Tone/Style
+                    </label>
+                    <select 
+                        id="tone" 
+                        class="w-full px-4 py-3 text-base border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent dark:bg-gray-700 dark:text-white"
+                    >
+                        <option value="">Select tone...</option>
+                        <option value="funny">😂 Funny/Comedy</option>
+                        <option value="romantic">💕 Romantic</option>
+                        <option value="dramatic">🎭 Dramatic</option>
+                        <option value="motivational">💪 Motivational</option>
+                        <option value="educational">📚 Educational</option>
+                        <option value="lifestyle">✨ Lifestyle</option>
+                        <option value="skit">🎪 Comedy Skit</option>
+                        <option value="storytelling">📖 Storytelling</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Keywords Input -->
+            <div class="mb-6">
+                <label for="keywords" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                    Keywords/Phrases (Optional)
+                </label>
+                <input 
+                    type="text" 
+                    id="keywords" 
+                    placeholder="e.g., jollof rice, Naija slang, Lagos traffic, school fees..."
+                    class="w-full px-4 py-3 text-base border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent dark:bg-gray-700 dark:text-white"
+                >
+                <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Separate multiple keywords with commas. These will be included in your script.</p>
+                
+                <!-- Keyword Suggestions -->
+                <div id="keywordSuggestions" class="mt-3">
+                    <p class="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">💡 Suggested Keywords:</p>
+                    <div id="suggestionTags" class="flex flex-wrap gap-2">
+                        <!-- Suggestions will be populated here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Platform Selection -->
+            <div class="mb-6">
+                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                    Platform (Optional)
+                </label>
+                <div class="flex flex-wrap gap-3">
+                    <label class="flex items-center cursor-pointer">
+                        <input type="radio" name="platform" value="tiktok" class="sr-only">
+                        <div class="platform-btn bg-white dark:bg-gray-700 border-2 border-gray-300 dark:border-gray-600 rounded-lg px-4 py-2 flex items-center space-x-2 hover:border-primary transition-colors">
+                            <span class="text-lg">📱</span>
+                            <span class="text-sm font-medium text-gray-700 dark:text-gray-300">TikTok</span>
+                        </div>
+                    </label>
+                    <label class="flex items-center cursor-pointer">
+                        <input type="radio" name="platform" value="youtube" class="sr-only">
+                        <div class="platform-btn bg-white dark:bg-gray-700 border-2 border-gray-300 dark:border-gray-600 rounded-lg px-4 py-2 flex items-center space-x-2 hover:border-primary transition-colors">
+                            <span class="text-lg">📺</span>
+                            <span class="text-sm font-medium text-gray-700 dark:text-gray-300">YouTube</span>
+                        </div>
+                    </label>
+                    <label class="flex items-center cursor-pointer">
+                        <input type="radio" name="platform" value="instagram" class="sr-only">
+                        <div class="platform-btn bg-white dark:bg-gray-700 border-2 border-gray-300 dark:border-gray-600 rounded-lg px-4 py-2 flex items-center space-x-2 hover:border-primary transition-colors">
+                            <span class="text-lg">📷</span>
+                            <span class="text-sm font-medium text-gray-700 dark:text-gray-300">Instagram</span>
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Generate Button -->
+            <button 
+                id="generateBtn" 
+                class="w-full bg-primary hover:bg-purple-700 text-white font-bold py-4 px-6 rounded-lg transition-colors duration-200 text-base disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+                Generate Script ✨
+            </button>
+        </div>
+
+        <!-- Generated Script Display -->
+        <div id="scriptContainer" class="hidden bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden">
+            <div class="bg-naija-green text-white p-4">
+                <h3 class="text-xl font-bold">Your Generated Script 🎬</h3>
+            </div>
+
+            <!-- Script Preview Bar -->
+            <div id="scriptPreview" class="hidden bg-gray-100 dark:bg-gray-700 border-b border-gray-200 dark:border-gray-600 p-4">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                    <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                        <div class="text-xs text-gray-500 dark:text-gray-400 mb-1">Duration</div>
+                        <div id="previewDuration" class="text-lg font-bold text-primary">~0:00</div>
+                    </div>
+                    <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                        <div class="text-xs text-gray-500 dark:text-gray-400 mb-1">Words</div>
+                        <div id="previewWordCount" class="text-lg font-bold text-naija-green">0</div>
+                    </div>
+                    <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                        <div class="text-xs text-gray-500 dark:text-gray-400 mb-1">Tone</div>
+                        <div id="previewTone" class="text-sm font-semibold text-gray-700 dark:text-gray-300">-</div>
+                    </div>
+                    <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                        <div class="text-xs text-gray-500 dark:text-gray-400 mb-1">Keywords</div>
+                        <div id="previewKeywords" class="text-sm font-semibold text-gray-700 dark:text-gray-300">0</div>
+                    </div>
+                </div>
+                
+                <!-- Detected Elements -->
+                <div id="detectedElements" class="mt-4">
+                    <div class="text-xs text-gray-500 dark:text-gray-400 mb-2">Detected Elements:</div>
+                    <div id="elementTags" class="flex flex-wrap gap-2">
+                        <!-- Dynamic elements will be populated here -->
+                    </div>
+                </div>
+            </div>
+            
+            <div class="p-6">
+                <div id="loadingState" class="hidden text-center py-8">
+                    <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
+                    <p class="text-gray-600 dark:text-gray-400">Generating your amazing script...</p>
+                </div>
+                
+                <div id="scriptContent" class="script-content text-gray-800 dark:text-gray-200 text-base leading-relaxed"></div>
+                
+                <div id="scriptActions" class="hidden mt-6 flex flex-wrap gap-3">
+                    <button id="regenerateBtn" class="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-lg transition-colors">
+                        🔄 Regenerate
+                    </button>
+                    <button id="copyBtn" class="bg-primary hover:bg-purple-700 text-white px-4 py-2 rounded-lg transition-colors">
+                        📋 Copy Script
+                    </button>
+                    <button id="newScriptBtn" class="bg-naija-green hover:bg-green-700 text-white px-4 py-2 rounded-lg transition-colors">
+                        ➕ New Script
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="text-center mt-12 text-gray-600 dark:text-gray-400">
+            <p class="text-sm">Made with ❤️ for Nigerian content creators</p>
+            <p class="text-xs mt-2">Create engaging content that resonates with your audience</p>
+        </div>
+    </div>
+
+    <script>
+        // Dark mode detection
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+
+        // Platform selection styling
+        document.querySelectorAll('input[name="platform"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                document.querySelectorAll('.platform-btn').forEach(btn => {
+                    btn.classList.remove('border-primary', 'bg-primary/10');
+                    btn.classList.add('border-gray-300', 'dark:border-gray-600');
+                });
+                
+                if (this.checked) {
+                    const btn = this.parentElement.querySelector('.platform-btn');
+                    btn.classList.remove('border-gray-300', 'dark:border-gray-600');
+                    btn.classList.add('border-primary', 'bg-primary/10');
+                }
+            });
+        });
+
+        // Script generation variables
+        let currentTopic = '';
+        let currentTone = '';
+        let currentPlatform = '';
+        let currentKeywords = '';
+
+        // Keyword suggestions database
+        const keywordDatabase = {
+            // General Nigerian keywords
+            general: [
+                'Naija', 'sabi', 'wahala', 'ginger', 'cruise', 'vibes', 'gbege', 
+                'wetin dey happen', 'no cap', 'for real', 'small chops', 'oga', 'madam',
+                'Lagos', 'Abuja', 'Port Harcourt', 'Kano', 'Ibadan', 'area boys',
+                'danfo', 'okada', 'go-slow', 'NEPA', 'gen', 'light'
+            ],
+            
+            // Food-related keywords  
+            food: [
+                'jollof rice', 'amala', 'egusi', 'suya', 'pounded yam', 'pepper soup',
+                'fried rice', 'plantain', 'akara', 'moi moi', 'fufu', 'ogbono',
+                'boli', 'chin chin', 'meat pie', 'shawarma', 'indomie'
+            ],
+
+            // Tone-specific keywords
+            funny: [
+                'comedy skit', 'pranks', 'funny moments', 'Nigerian memes', 'wahala',
+                'gbege', 'cruise control', 'no chill', 'mad o', 'e choke',
+                'who did this', 'this one na wa', 'see finish'
+            ],
+
+            romantic: [
+                'babe', 'my person', 'sweetheart', 'relationship goals', 'couple goals',
+                'Valentine', 'proposal', 'anniversary', 'date night', 'love letters',
+                'heart eyes', 'butterflies', 'romantic dinner'
+            ],
+
+            dramatic: [
+                'Nollywood', 'plot twist', 'betrayal', 'family drama', 'village people',
+                'spiritual attack', 'destiny', 'prophecy', 'miracle', 'testimony',
+                'tears', 'emotional', 'breakthrough'
+            ],
+
+            motivational: [
+                'hustle', 'grind', 'success story', 'motivation Monday', 'goals',
+                'achievements', 'dreams', 'hardwork', 'persistence', 'breakthrough',
+                'inspiration', 'mindset', 'boss moves', 'level up'
+            ],
+
+            educational: [
+                'knowledge', 'facts', 'did you know', 'learn something new', 'tips',
+                'tutorial', 'how to', 'education', 'Nigerian history', 'culture',
+                'traditions', 'language', 'Yoruba', 'Igbo', 'Hausa'
+            ],
+
+            lifestyle: [
+                'fashion', 'beauty', 'skincare', 'hairstyles', 'makeup', 'outfit',
+                'glow up', 'self care', 'wellness', 'fitness', 'healthy living',
+                'natural hair', 'accessories', 'shopping', 'trends'
+            ],
+
+            skit: [
+                'character', 'comedy', 'acting', 'funny voices', 'impressions',
+                'parody', 'satire', 'relatable content', 'everyday situations',
+                'Nigerian parents', 'school life', 'office drama'
+            ],
+
+            storytelling: [
+                'true life story', 'experience', 'journey', 'adventure', 'memories',
+                'childhood', 'growing up in Nigeria', 'culture shock', 'travel',
+                'life lessons', 'wisdom', 'testimony'
+            ],
+
+            // Topic-based suggestions
+            university: [
+                'JAMB', 'UTME', 'fresher', 'finals', 'lecturer', 'course mate',
+                'hostel', 'campus life', 'school fees', 'strike', 'semester',
+                'examination', 'project', 'thesis'
+            ],
+
+            dating: [
+                'toasting', 'relationship', 'boyfriend', 'girlfriend', 'breakup',
+                'dating apps', 'first date', 'valentine', 'anniversary',
+                'marriage', 'proposal', 'commitment'
+            ],
+
+            work: [
+                'job hunt', 'interview', 'salary', 'boss', 'colleague', 'office',
+                'meeting', 'deadline', 'promotion', 'resignation', 'career',
+                'professional', 'networking'
+            ],
+
+            family: [
+                'parents', 'siblings', 'extended family', 'family meeting',
+                'home training', 'respect', 'traditions', 'ceremony',
+                'celebration', 'reunion', 'aunty', 'uncle'
+            ]
+        };
+
+        // Function to get relevant keyword suggestions
+        function getRelevantKeywords(topic, tone) {
+            let suggestions = [];
+            
+            // Always include general Nigerian keywords
+            suggestions.push(...keywordDatabase.general.slice(0, 8));
+            
+            // Add tone-specific keywords
+            if (tone && keywordDatabase[tone]) {
+                suggestions.push(...keywordDatabase[tone].slice(0, 6));
+            }
+            
+            // Add topic-specific keywords based on keywords in topic
+            const topicLower = topic.toLowerCase();
+            if (topicLower.includes('food') || topicLower.includes('eat') || topicLower.includes('cook')) {
+                suggestions.push(...keywordDatabase.food.slice(0, 4));
+            }
+            if (topicLower.includes('university') || topicLower.includes('school') || topicLower.includes('student')) {
+                suggestions.push(...keywordDatabase.university.slice(0, 4));
+            }
+            if (topicLower.includes('dating') || topicLower.includes('relationship') || topicLower.includes('love')) {
+                suggestions.push(...keywordDatabase.dating.slice(0, 4));
+            }
+            if (topicLower.includes('work') || topicLower.includes('job') || topicLower.includes('office')) {
+                suggestions.push(...keywordDatabase.work.slice(0, 4));
+            }
+            if (topicLower.includes('family') || topicLower.includes('parent') || topicLower.includes('home')) {
+                suggestions.push(...keywordDatabase.family.slice(0, 4));
+            }
+            
+            // Remove duplicates and limit to 12 suggestions
+            return [...new Set(suggestions)].slice(0, 12);
+        }
+
+        // Function to update keyword suggestions
+        function updateKeywordSuggestions() {
+            const topic = document.getElementById('topic').value.trim();
+            const tone = document.getElementById('tone').value;
+            const suggestionTags = document.getElementById('suggestionTags');
+            
+            // Clear existing suggestions
+            suggestionTags.innerHTML = '';
+            
+            if (!topic && !tone) {
+                // Show default general suggestions
+                const defaultSuggestions = keywordDatabase.general.slice(0, 8);
+                renderSuggestionTags(defaultSuggestions, suggestionTags);
+                return;
+            }
+            
+            const relevantKeywords = getRelevantKeywords(topic, tone);
+            renderSuggestionTags(relevantKeywords, suggestionTags);
+        }
+
+        // Function to render suggestion tags
+        function renderSuggestionTags(keywords, container) {
+            keywords.forEach(keyword => {
+                const tag = document.createElement('button');
+                tag.type = 'button';
+                tag.className = 'bg-primary/10 hover:bg-primary/20 text-primary border border-primary/30 px-3 py-1 rounded-full text-sm transition-colors cursor-pointer';
+                tag.textContent = keyword;
+                tag.onclick = () => addKeywordToInput(keyword);
+                container.appendChild(tag);
+            });
+        }
+
+        // Function to add keyword to input
+        function addKeywordToInput(keyword) {
+            const keywordsInput = document.getElementById('keywords');
+            const currentValue = keywordsInput.value.trim();
+            
+            // Check if keyword already exists
+            const currentKeywords = currentValue.split(',').map(k => k.trim()).filter(k => k);
+            if (currentKeywords.includes(keyword)) {
+                return; // Don't add duplicate
+            }
+            
+            // Add keyword
+            if (currentValue) {
+                keywordsInput.value = currentValue + ', ' + keyword;
+            } else {
+                keywordsInput.value = keyword;
+            }
+            
+            // Add visual feedback
+            const tag = event.target;
+            const originalBg = tag.className;
+            tag.className = tag.className.replace('bg-primary/10', 'bg-naija-green').replace('text-primary', 'text-white').replace('border-primary/30', 'border-naija-green');
+            tag.textContent = '✓ ' + keyword;
+            
+            setTimeout(() => {
+                tag.className = originalBg;
+                tag.textContent = keyword;
+            }, 1000);
+        }
+
+        // Script analysis functions
+        function analyzeScript(scriptText) {
+            const words = scriptText.trim().split(/\s+/).filter(word => word.length > 0);
+            const wordCount = words.length;
+            
+            // Estimate duration based on average speaking rate (150-160 words per minute)
+            const estimatedMinutes = Math.ceil(wordCount / 155);
+            const minutes = Math.floor(estimatedMinutes);
+            const seconds = Math.round((estimatedMinutes - minutes) * 60);
+            const duration = minutes > 0 ? `${minutes}:${seconds.toString().padStart(2, '0')}` : `0:${Math.max(30, seconds).toString().padStart(2, '0')}`;
+            
+            // Detect elements in the script
+            const detectedElements = [];
+            const scriptLower = scriptText.toLowerCase();
+            
+            // Check for Nigerian slang/culture
+            const nigerianTerms = ['naija', 'wahala', 'oga', 'madam', 'sabi', 'wetin', 'gbege', 'cruise', 'vibes', 'ginger', 'jollof', 'suya', 'danfo', 'okada', 'lagos', 'abuja'];
+            if (nigerianTerms.some(term => scriptLower.includes(term))) {
+                detectedElements.push('Nigerian Culture');
+            }
+            
+            // Check for dialogue
+            if (scriptText.includes(':') || scriptText.includes('"') || scriptText.includes("'")) {
+                detectedElements.push('Dialogue');
+            }
+            
+            // Check for action descriptions
+            if (scriptText.includes('[') || scriptText.includes('(') || /\b(action|scene|cut to|fade in|fade out)\b/i.test(scriptText)) {
+                detectedElements.push('Scene Directions');
+            }
+            
+            // Check for humor indicators
+            if (/\b(laugh|funny|joke|hilarious|comedy|haha|lol)\b/i.test(scriptText) || scriptText.includes('😂') || scriptText.includes('🤣')) {
+                detectedElements.push('Comedy');
+            }
+            
+            // Check for emotional content
+            if (/\b(emotional|tears|crying|sad|happy|excited|angry|love)\b/i.test(scriptText)) {
+                detectedElements.push('Emotional');
+            }
+            
+            // Check for educational content
+            if (/\b(learn|teach|fact|tip|how to|tutorial|education|knowledge)\b/i.test(scriptText)) {
+                detectedElements.push('Educational');
+            }
+            
+            return {
+                wordCount,
+                duration,
+                detectedElements
+            };
+        }
+
+        function updateScriptPreview(scriptText) {
+            const analysis = analyzeScript(scriptText);
+            const scriptPreview = document.getElementById('scriptPreview');
+            const previewDuration = document.getElementById('previewDuration');
+            const previewWordCount = document.getElementById('previewWordCount');
+            const previewTone = document.getElementById('previewTone');
+            const previewKeywords = document.getElementById('previewKeywords');
+            const elementTags = document.getElementById('elementTags');
+            
+            // Update metrics
+            previewDuration.textContent = `~${analysis.duration}`;
+            previewWordCount.textContent = analysis.wordCount;
+            previewTone.textContent = currentTone.charAt(0).toUpperCase() + currentTone.slice(1) || '-';
+            
+            // Count keywords used
+            const keywordsList = currentKeywords ? currentKeywords.split(',').map(k => k.trim()).filter(k => k) : [];
+            const keywordsFound = keywordsList.filter(keyword => 
+                scriptText.toLowerCase().includes(keyword.toLowerCase())
+            ).length;
+            previewKeywords.textContent = keywordsList.length > 0 ? `${keywordsFound}/${keywordsList.length}` : '0';
+            
+            // Update detected elements
+            elementTags.innerHTML = '';
+            analysis.detectedElements.forEach(element => {
+                const tag = document.createElement('span');
+                tag.className = 'bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-2 py-1 rounded text-xs';
+                tag.textContent = element;
+                elementTags.appendChild(tag);
+            });
+            
+            // Show preview bar
+            scriptPreview.classList.remove('hidden');
+        }
+
+        // Register handler for script generation
+        if (window.Poe) {
+            window.Poe.registerHandler("script-generator", (result, context) => {
+                const msg = result.responses[0];
+                const scriptContent = document.getElementById('scriptContent');
+                const loadingState = document.getElementById('loadingState');
+                const scriptActions = document.getElementById('scriptActions');
+
+                if (msg.status === "error") {
+                    loadingState.classList.add('hidden');
+                    scriptContent.innerHTML = `<div class="text-red-600 text-center py-4">❌ Sorry, there was an error generating your script. Please try again!</div>`;
+                    scriptActions.classList.remove('hidden');
+                } else if (msg.status === "incomplete") {
+                    loadingState.classList.add('hidden');
+                    scriptContent.textContent = msg.content;
+                    // Update preview with partial content
+                    if (msg.content.length > 50) {
+                        updateScriptPreview(msg.content);
+                    }
+                } else if (msg.status === "complete") {
+                    loadingState.classList.add('hidden');
+                    scriptContent.textContent = msg.content;
+                    scriptActions.classList.remove('hidden');
+                    // Update preview with final content
+                    updateScriptPreview(msg.content);
+                }
+            });
+        }
+
+        // Generate script function
+        async function generateScript(isRegenerate = false) {
+            const topic = document.getElementById('topic').value.trim();
+            const tone = document.getElementById('tone').value;
+            const keywords = document.getElementById('keywords').value.trim();
+            const platform = document.querySelector('input[name="platform"]:checked')?.value || '';
+
+            if (!topic || !tone) {
+                alert('Please enter a topic and select a tone!');
+                return;
+            }
+
+            // Store current values
+            currentTopic = topic;
+            currentTone = tone;
+            currentKeywords = keywords;
+            currentPlatform = platform;
+
+            // Show script container and loading state
+            const scriptContainer = document.getElementById('scriptContainer');
+            const loadingState = document.getElementById('loadingState');
+            const scriptContent = document.getElementById('scriptContent');
+            const scriptActions = document.getElementById('scriptActions');
+
+            scriptContainer.classList.remove('hidden');
+            loadingState.classList.remove('hidden');
+            scriptContent.textContent = '';
+            scriptActions.classList.add('hidden');
+
+            // Disable generate button
+            const generateBtn = document.getElementById('generateBtn');
+            const regenerateBtn = document.getElementById('regenerateBtn');
+            generateBtn.disabled = true;
+            regenerateBtn.disabled = true;
+
+            // Build platform-specific context
+            let platformContext = '';
+            if (platform) {
+                const platformDetails = {
+                    'tiktok': 'TikTok (short, punchy, trending)',
+                    'youtube': 'YouTube (can be slightly longer, engaging)',
+                    'instagram': 'Instagram (visual-friendly, hashtag-ready)'
+                };
+                platformContext = ` for ${platformDetails[platform]}`;
+            }
+
+            // Create detailed prompt for Nigerian content
+            let keywordsText = '';
+            if (keywords) {
+                keywordsText = `\n- Keywords to include: ${keywords}`;
+            }
+
+            let prompt = `Write a Nigerian-style script${platformContext}.\n- Topic: ${topic}\n- Tone: ${tone}${keywordsText}\nMake it engaging, authentic, and suitable for social media.`;
+
+            if (isRegenerate) {
+                prompt += `\nGive a fresh, alternative version.`;
+            }
+
+            try {
+                const response = await fetch("http://localhost:3000/generate", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ prompt })
+                });
+                const data = await response.json();
+                if (data.error) {
+                    loadingState.classList.add('hidden');
+                    scriptContent.innerHTML = `<div class="text-red-600 text-center py-4">❌ Error: ${data.error}</div>`;
+                    scriptActions.classList.remove('hidden');
+                    return;
+                }
+                const aiScript = data.choices[0].message.content;
+
+                loadingState.classList.add('hidden');
+                scriptContent.textContent = aiScript;
+                scriptActions.classList.remove('hidden');
+                updateScriptPreview(aiScript);
+            } catch (error) {
+                loadingState.classList.add('hidden');
+                scriptContent.innerHTML = `<div class="text-red-600 text-center py-4">❌ Error: ${error.message}</div>`;
+                scriptActions.classList.remove('hidden');
+            }
+        }
+
+        // Event listeners
+        document.getElementById('generateBtn').addEventListener('click', () => generateScript());
+
+        document.getElementById('regenerateBtn').addEventListener('click', () => generateScript(true));
+
+        document.getElementById('copyBtn').addEventListener('click', () => {
+            const scriptText = document.getElementById('scriptContent').textContent;
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(scriptText).then(() => {
+                    const btn = document.getElementById('copyBtn');
+                    const originalText = btn.textContent;
+                    btn.textContent = '✅ Copied!';
+                    setTimeout(() => {
+                        btn.textContent = originalText;
+                    }, 2000);
+                });
+            }
+        });
+
+        document.getElementById('newScriptBtn').addEventListener('click', () => {
+            document.getElementById('topic').value = '';
+            document.getElementById('tone').value = '';
+            document.getElementById('keywords').value = '';
+            document.querySelectorAll('input[name="platform"]').forEach(radio => radio.checked = false);
+            document.querySelectorAll('.platform-btn').forEach(btn => {
+                btn.classList.remove('border-primary', 'bg-primary/10');
+                btn.classList.add('border-gray-300', 'dark:border-gray-600');
+            });
+            document.getElementById('scriptContainer').classList.add('hidden');
+            document.getElementById('topic').focus();
+        });
+
+        // Enter key support
+        document.getElementById('topic').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' && document.getElementById('tone').value) {
+                generateScript();
+            }
+        });
+
+        // Update suggestions when inputs change
+        document.getElementById('topic').addEventListener('input', updateKeywordSuggestions);
+        document.getElementById('tone').addEventListener('change', updateKeywordSuggestions);
+
+        // Initialize suggestions on page load
+        document.addEventListener('DOMContentLoaded', updateKeywordSuggestions);
+    </script>
+</body>
+</html>
